@@ -234,7 +234,7 @@ async function syncCart() {
 
   if (items.length === 0) {
     cartItemsEl.innerHTML = `<p class="empty-cart">Ton panier est vide.</p>`;
-    cartTotalEl.textContent = "0 XOF";
+    cartTotalEl.textContent = "0 XAF";
     quoteNoteEl.classList.add("hidden");
     checkoutBtn.disabled = true;
     return;
@@ -276,6 +276,15 @@ checkoutForm.addEventListener("submit", async (e) => {
   const customerContact = document.getElementById("customerContact").value.trim();
   const notes = document.getElementById("notes").value.trim();
 
+  // Open the tab synchronously, inside the click handler, BEFORE any await.
+  // Browsers only allow window.open() without being blocked as a popup when
+  // it happens directly in response to a user gesture — calling it after an
+  // awaited fetch() loses that gesture context and gets silently blocked
+  // (the order still succeeds server-side, which is why the cart clears,
+  // but no WhatsApp tab appears). We open a blank tab now and redirect it
+  // once we have the real WhatsApp URL.
+  const whatsappTab = window.open("", "_blank");
+
   checkoutBtn.disabled = true;
   checkoutBtn.textContent = "Envoi en cours...";
 
@@ -288,13 +297,21 @@ checkoutForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (!res.ok) {
+      if (whatsappTab) whatsappTab.close();
       alert(data.error || "Une erreur est survenue.");
       checkoutBtn.disabled = false;
       checkoutBtn.textContent = "Envoyer la commande sur WhatsApp";
       return;
     }
 
-    window.open(data.whatsappUrl, "_blank");
+    if (whatsappTab) {
+      whatsappTab.location.href = data.whatsappUrl;
+    } else {
+      // Popup was blocked even for the synchronous open (e.g. very strict
+      // browser settings) — fall back to a same-tab redirect so the order
+      // still reaches WhatsApp instead of silently failing.
+      window.location.href = data.whatsappUrl;
+    }
 
     cart = [];
     renderProducts();
@@ -302,6 +319,7 @@ checkoutForm.addEventListener("submit", async (e) => {
     checkoutForm.reset();
   } catch (err) {
     console.error(err);
+    if (whatsappTab) whatsappTab.close();
     alert("Impossible de contacter le serveur.");
   } finally {
     checkoutBtn.disabled = false;

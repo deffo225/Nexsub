@@ -154,7 +154,7 @@ function computeCart(items) {
     lines.push(line);
   }
 
-  return { lines, total, currency: "XOF", hasCustomQuoteItem, errors };
+  return { lines, total, currency: "XAF", hasCustomQuoteItem, errors };
 }
 
 // ---------- routes ----------
@@ -203,7 +203,7 @@ app.post("/api/orders", (req, res) => {
     notes: notes || "",
     lines,
     total,
-    currency: "XOF",
+    currency: "XAF",
     status: "pending"
   };
   orders.push(order);
