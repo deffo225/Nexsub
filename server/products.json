@@ -1,0 +1,120 @@
+[
+  {
+    "id": "svc-music-a",
+    "name": "Spotify",
+    "category": "Music",
+    "type": "fixed",
+    "price": 2000,
+    "currency": "XAF",
+    "logo": "/img/spotify.jpeg",
+    "description": "1 month access slot"
+  },
+  {
+    "id": "svc-music-b",
+    "name": "Apple Music",
+    "category": "Music",
+    "type": "fixed",
+    "price": 2000,
+    "currency": "XAF",
+    "logo": "/img/applemusic.jpeg",
+    "description": "1 month access slot"
+  },
+  {
+    "id": "svc-video-a",
+    "name": "Netflix",
+    "category": "Video",
+    "type": "fixed",
+    "price": 3000,
+    "currency": "XAF",
+    "logo": "public/img/netflix.jpeg",
+    "description": "1 month access slot"
+  },
+  {
+    "id": "svc-video-b",
+    "name": "Prime Video",
+    "category": "Video",
+    "type": "fixed",
+    "price": 3000,
+    "currency": "XAF",
+    "logo": "/img/prime video.jpeg",
+    "description": "1 month access slot"
+  },
+  {
+    "id": "svc-chat-plus",
+    "name": "Snapchat+",
+    "category": "Social",
+    "type": "fixed",
+    "price": 2500,
+    "currency": "XAF",
+    "logo": "/img/snap+.jpeg",
+    "description": "1 month subscription"
+  },
+  {
+    "id": "svc-language",
+    "name": "Super Duolingo",
+    "category": "Education",
+    "type": "fixed",
+    "price": 1500,
+    "currency": "XAF",
+    "logo": "/img/super duolingo.jpeg",
+    "description": "1 month subscription"
+  },
+  {
+    "id": "svc-fashion",
+    "name": "Commande panier Shein",
+    "category": "Shopping",
+    "type": "percent_fee",
+    "feePercent": 35,
+    "currency": "XAF",
+    "logo": "/img/shein.jpeg",
+    "description": "Enter the item's cost and the transport fee for this order â handling fee is added automatically"
+  },
+  {
+    "id": "svc-social-boost",
+    "name": "Boost video TikTok (1000 views)",
+    "category": "Promotion",
+    "type": "fixed",
+    "price": 2000,
+    "currency": "XAF",
+    "logo": "/img/boostage video tiktok.jpeg",
+    "descripticon": "Per 1000 views package"
+  },
+  {
+    "id": "svc-gaming-plus",
+    "name": "PS+",
+    "category": "Gaming",
+    "type": "tiered",
+    "currency": "XAF",
+    "logo": "/img/ps+.jpeg",
+    "description": "Choose a plan length",
+    "tiers": [
+      { "id": "1m", "label": "1 month", "price": 10000 },
+      { "id": "3m", "label": "3 months", "price": 27500 },
+      { "id": "12m", "label": "12 months", "price": 106000 }
+    ]
+  },
+  {
+    "id": "svc-game-currency",
+    "name": "Acheter des Robux",
+    "category": "Gaming",
+    "type": "amount_calc",
+    "currency": "XAF",
+    "logo": "/img/robux.jpeg",
+    "description": "Enter the amount of in-game currency you want",
+    "baseCostPerUnit": 8,
+    "marginPercent": 30,
+    "minAmount": 100,
+    "step": 50,
+    "unitLabel": "units"
+  },
+  {
+    "id": "svc-anime",
+    "name": "Crunchyroll",
+    "category": "Video",
+    "type": "fixed",
+    "price": 3000,
+    "currency": "XAF",
+    "logo": "/img/crunchyroll.jpeg",
+    "description": "1 month subscription"
+  }
+]

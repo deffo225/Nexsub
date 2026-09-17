@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSub</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <header class="site-header">
+    <div class="logo">Nex<span>Sub</span></div>
+    <nav>
+      <a href="#catalog">Catalogue</a>
+      <a href="#cart">Panier <span id="cart-count" class="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Choisis. Ajoute. Commande.</h1>
+    <p>Catalogue de produits numériques — total calculé automatiquement, commande envoyée directement à l'admin sur WhatsApp.</p>
+  </section>
+
+  <section id="catalog" class="catalog">
+    <h2>Catalogue</h2>
+    <div id="product-grid" class="product-grid"></div>
+  </section>
+
+  <section id="cart" class="cart-section">
+    <h2>Panier</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <div class="total-line">
+        <span>Total</span>
+        <span id="cart-total">0 XOF</span>
+      </div>
+      <p id="quote-note" class="quote-note hidden">Certains articles nécessitent un devis personnalisé (ajusté par l'admin avant confirmation).</p>
+    </div>
+
+    <form id="checkout-form" class="checkout-form">
+      <h3>Finaliser la commande</h3>
+      <label>
+        Nom
+        <input type="text" id="customerName" required placeholder="Votre nom">
+      </label>
+      <label>
+        Contact (téléphone ou email)
+        <input type="text" id="customerContact" required placeholder="Ex: 90000000">
+      </label>
+      <label>
+        Notes (optionnel)
+        <textarea id="notes" placeholder="Précisions sur la commande..."></textarea>
+      </label>
+      <button type="submit" id="checkout-btn">Envoyer la commande sur WhatsApp</button>
+    </form>
+  </section>
+
+  <footer class="site-footer">
+    <p>NexSub — scaffold de démonstration. Remplace les logos, les noms de produits et les prix par ton propre catalogue légitime.</p>
+  </footer>
+
+  <script src="particles.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
